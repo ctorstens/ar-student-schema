@@ -1,17 +1,16 @@
 require_relative '../../db/config'
 
-# implement your Student model here
+# implement your Teacher model here
 
 
 
 
 
-class Student < ActiveRecord::Base
+class Teacher < ActiveRecord::Base
   validates :email, :email => true, :uniqueness => true
-  validates :age, :age => true
   validates :phone, :phone => true
 
-  belongs_to :teacher
+  has_many :student
   def name
     "#{first_name} #{last_name}"
   end
@@ -27,3 +26,15 @@ class Student < ActiveRecord::Base
 end
 
 
+#  teacher = Teacher.new( first_name: "June",
+#                             last_name: "Parker",
+#                             email: "jparker@email.com" )
+
+
+# teacher.save
+# p teacher
+# teacher.delete
+# p teacher
+
+
+p Teacher.where("id = ?", 2)
